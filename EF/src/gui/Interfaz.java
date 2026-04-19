@@ -29,6 +29,20 @@ public class Interfaz extends JFrame {
 	private JButton btnAdicionar;
 
 	ArregloProducto ae = new ArregloProducto();
+	private JButton btnModificar;
+	private JButton btnEliminar;
+	private JTextField txtNombre;
+	private JTextField txtMarca;
+	private JTextField txtCategoria;
+	private JTextField txtPrecioCosto;
+	private JTextField txtStock;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	private JLabel lblNewLabel_4;
+	private JLabel lblNewLabel_5;
+	private JTextField txtPrecioVenta;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -45,30 +59,30 @@ public class Interfaz extends JFrame {
 
 	public Interfaz() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 659, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		// Label
-		JLabel lblProducto = new JLabel("Producto:");
-		lblProducto.setBounds(20, 13, 80, 14);
+		JLabel lblProducto = new JLabel("Código");
+		lblProducto.setBounds(10, 13, 53, 14);
 		contentPane.add(lblProducto);
 
 		// TextField
 		txtProducto = new JTextField();
-		txtProducto.setBounds(97, 10, 96, 20);
+		txtProducto.setBounds(10, 37, 80, 18);
 		contentPane.add(txtProducto);
 
 		// Área de texto
 		txtS = new JTextArea();
-		txtS.setBounds(10, 93, 416, 160);
+		txtS.setBounds(10, 93, 619, 260);
 		contentPane.add(txtS);
 
 		// Botón Reportar
 		btnReportar = new JButton("Reportar");
-		btnReportar.setBounds(20, 50, 84, 23);
+		btnReportar.setBounds(10, 60, 84, 23);
 		contentPane.add(btnReportar);
 
 		btnReportar.addActionListener(new ActionListener() {
@@ -79,7 +93,7 @@ public class Interfaz extends JFrame {
 
 		// Botón Buscar
 		btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(109, 50, 84, 23);
+		btnBuscar.setBounds(104, 60, 84, 23);
 		contentPane.add(btnBuscar);
 
 		btnBuscar.addActionListener(new ActionListener() {
@@ -90,14 +104,91 @@ public class Interfaz extends JFrame {
 
 		// Botón Adicionar
 		btnAdicionar = new JButton("Adicionar");
-		btnAdicionar.setBounds(203, 50, 100, 23);
+		btnAdicionar.setBounds(198, 60, 100, 23);
 		contentPane.add(btnAdicionar);
+
+		// Botón Modificar
+		btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(308, 63, 84, 20);
+		contentPane.add(btnModificar);
+
+		// Botón Eliminar
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(402, 63, 84, 20);
+		contentPane.add(btnEliminar);
+		
+			txtNombre = new JTextField();
+			txtNombre.setBounds(100, 37, 80, 18);
+			contentPane.add(txtNombre);
+			txtNombre.setColumns(10);
+		
+		{
+			txtMarca = new JTextField();
+			txtMarca.setBounds(190, 37, 80, 18);
+			contentPane.add(txtMarca);
+			txtMarca.setColumns(10);
+		}
+		{
+			txtCategoria = new JTextField();
+			txtCategoria.setBounds(280, 37, 80, 18);
+			contentPane.add(txtCategoria);
+			txtCategoria.setColumns(10);
+		}
+		{
+			txtPrecioCosto = new JTextField();
+			txtPrecioCosto.setBounds(460, 37, 80, 18);
+			contentPane.add(txtPrecioCosto);
+			txtPrecioCosto.setColumns(10);
+		}
+		
+		txtStock = new JTextField();
+		txtStock.setBounds(370, 37, 80, 18);
+		contentPane.add(txtStock);
+		txtStock.setColumns(10);
+		{
+			lblNewLabel = new JLabel("Nombre");
+			lblNewLabel.setBounds(100, 14, 60, 12);
+			contentPane.add(lblNewLabel);
+		}
+		{
+			lblNewLabel_1 = new JLabel("Marca");
+			lblNewLabel_1.setBounds(190, 14, 44, 12);
+			contentPane.add(lblNewLabel_1);
+		}
+		{
+			lblNewLabel_2 = new JLabel("Categoría");
+			lblNewLabel_2.setBounds(280, 14, 80, 12);
+			contentPane.add(lblNewLabel_2);
+		}
+		{
+			lblNewLabel_3 = new JLabel("Stock");
+			lblNewLabel_3.setBounds(370, 14, 44, 12);
+			contentPane.add(lblNewLabel_3);
+		}
+		{
+			lblNewLabel_4 = new JLabel("Precio Costo");
+			lblNewLabel_4.setBounds(460, 14, 77, 12);
+			contentPane.add(lblNewLabel_4);
+		}
+		{
+			lblNewLabel_5 = new JLabel("Precio Venta");
+			lblNewLabel_5.setBounds(550, 14, 79, 12);
+			contentPane.add(lblNewLabel_5);
+		}
+		{
+			txtPrecioVenta = new JTextField();
+			txtPrecioVenta.setBounds(550, 37, 80, 18);
+			contentPane.add(txtPrecioVenta);
+			txtPrecioVenta.setColumns(10);
+		}
 
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				do_btnAdicionar_actionPerformed(e);
 			}
 		});
+
+		
 	}
 
 	// ---------------- FUNCIONES ----------------
