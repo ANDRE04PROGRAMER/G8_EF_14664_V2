@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
-public class Interfaz extends JFrame {
+public class Interfaz extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -109,6 +109,7 @@ public class Interfaz extends JFrame {
 
 		// Botón Modificar
 		btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(this);
 		btnModificar.setBounds(308, 63, 84, 20);
 		contentPane.add(btnModificar);
 
@@ -230,4 +231,38 @@ public class Interfaz extends JFrame {
 	void Imprimir(String s) {
 		txtS.append(s + "\n");
 	}
+	
+	// Botón Modificar
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnModificar) {
+			do_btnModificar_actionPerformed(e);
+		}
+	}
+	protected void do_btnModificar_actionPerformed(ActionEvent e) {
+		try {
+	        int codigo = Integer.parseInt(txtProducto.getText());
+
+	        Producto p = ae.Buscar(codigo);
+
+	        if (p != null) {
+	            p.setNombre(txtNombre.getText());
+	            p.setMarca(txtMarca.getText());
+	            p.setCategoria(txtCategoria.getText());
+	            p.setStock(Integer.parseInt(txtStock.getText()));
+	            p.setPrecioC(Double.parseDouble(txtPrecioCosto.getText()));
+	            p.setPrecioV(Double.parseDouble(txtPrecioVenta.getText()));
+
+	            JOptionPane.showMessageDialog(this, "Producto modificado correctamente");
+	        } else {
+	            JOptionPane.showMessageDialog(this, "Producto no encontrado");
+	        }
+
+	    } catch (Exception ex) {
+	        JOptionPane.showMessageDialog(this, "Error en los datos ingresados");
+	    }
+	}
+	
+	
+	
 }
