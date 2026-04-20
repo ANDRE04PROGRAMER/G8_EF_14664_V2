@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class Inicio extends JFrame implements ActionListener {
 
@@ -25,6 +26,7 @@ public class Inicio extends JFrame implements ActionListener {
 	private JTextField txtUsuario;
 	private JButton btnNewButton;
 	private JPasswordField txtContraseña;
+	private JLabel imagen;
 
 	/**
 	 * Launch the application.
@@ -47,7 +49,7 @@ public class Inicio extends JFrame implements ActionListener {
 	 */
 	public Inicio() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 292, 345);
+		setBounds(100, 100, 540, 347);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -85,6 +87,15 @@ public class Inicio extends JFrame implements ActionListener {
 			txtContraseña.setBounds(83, 186, 86, 20);
 			contentPane.add(txtContraseña);
 		}
+		{
+			imagen = new JLabel();
+			ImageIcon icon = new ImageIcon("images.jpg");
+			imagen.setIcon(icon);
+			imagen.setBounds(263, 10, 253, 283);
+		
+		getContentPane().add(imagen);
+		}
+	    
 
 	}
 	public void actionPerformed(ActionEvent e) {
@@ -107,4 +118,4 @@ public class Inicio extends JFrame implements ActionListener {
 		
 		
 	}
-}
+	}

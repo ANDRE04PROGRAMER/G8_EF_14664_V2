@@ -3,4 +3,5 @@
     <fullyQualifiedTypeName name="clases.ArregloProducto"/>
     <fullyQualifiedTypeName name="clases.Ventas"/>
     <fullyQualifiedTypeName name="clases.Producto"/>
+    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
 </qualifiedTypeNameHistroy>
