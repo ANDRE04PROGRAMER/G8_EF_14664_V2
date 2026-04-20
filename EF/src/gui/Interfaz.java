@@ -115,6 +115,7 @@ public class Interfaz extends JFrame implements ActionListener {
 
 		// Botón Eliminar
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(this);
 		btnEliminar.setBounds(402, 63, 84, 20);
 		contentPane.add(btnEliminar);
 		
@@ -210,7 +211,7 @@ public class Interfaz extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(this, "No existe");
 			}
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(this, "Ingrese un código válido");
+			JOptionPane.showMessageDialog(this, "Ingrese un código válido");			
 		}
 	}
 
@@ -235,6 +236,9 @@ public class Interfaz extends JFrame implements ActionListener {
 	// Botón Modificar
 	
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnEliminar) {
+			do_btnEliminar_actionPerformed(e);
+		}
 		if (e.getSource() == btnModificar) {
 			do_btnModificar_actionPerformed(e);
 		}
@@ -265,4 +269,22 @@ public class Interfaz extends JFrame implements ActionListener {
 	
 	
 	
+	protected void do_btnEliminar_actionPerformed(ActionEvent e) {
+		int cod = Integer.parseInt(txtProducto.getText());
+		Producto p = ae.Buscar(cod);
+		
+		try {
+			if (p != null) {
+				ae.Eliminar(p);
+				JOptionPane.showMessageDialog(this, "Producto eliminado");
+				txtProducto.setText("");
+			} else {
+				JOptionPane.showMessageDialog(this, "El codigo no existe");
+				txtProducto.setText("");
+			}
+			
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(this, "Ingrese el código válido");			
+		}		
+	}
 }

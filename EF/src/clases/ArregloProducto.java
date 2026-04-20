@@ -33,4 +33,8 @@ public Producto Buscar(int codigo) {
 	}
 	return null;
 }
+
+public void Eliminar (Producto x) {
+	Pro.remove(x);
+}
 }
