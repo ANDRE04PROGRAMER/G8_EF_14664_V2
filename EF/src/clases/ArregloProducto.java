@@ -33,6 +33,14 @@ public Producto Buscar(int codigo) {
 	}
 	return null;
 }
+public Producto Buscar(String nombre) {
+	for (int i=0 ; i < Tamaño();i++) {
+		if(Obtener(i).getNombre().equalsIgnoreCase(nombre)) {
+			return Obtener(i);
+		}
+	}
+	return null;
+}
 
 public void Eliminar (Producto x) {
 	Pro.remove(x);
