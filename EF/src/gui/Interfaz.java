@@ -64,6 +64,7 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 	private JPanel panel;
 	private JPanel panel_1;
 	private JTable tablaP;
+	private JButton btnLimpiar;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -81,7 +82,7 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 	public Interfaz() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 659, 400);
+		setBounds(100, 100, 668, 400);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -154,7 +155,7 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 		contentPane.add(btnEliminar);
 		{
 			scrollPane = new JScrollPane();
-			scrollPane.setBounds(22, 193, 598, 157);
+			scrollPane.setBounds(22, 193, 614, 157);
 			contentPane.add(scrollPane);
 			{
 				tablaP = new JTable();
@@ -228,7 +229,7 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 							panel_1.add(lblProducto);
 							{
 								lblNewLabel_2 = new JLabel("Categoría");
-								lblNewLabel_2.setBounds(199, 58, 80, 12);
+								lblNewLabel_2.setBounds(199, 53, 80, 23);
 								panel_1.add(lblNewLabel_2);
 							}
 							{
@@ -249,7 +250,7 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 								}
 								{
 									panel = new JPanel();
-									panel.setBounds(386, 11, 205, 81);
+									panel.setBounds(386, 11, 206, 81);
 									panel_1.add(panel);
 									panel.setBackground(Color.WHITE);
 									panel.setForeground(Color.WHITE);
@@ -257,26 +258,32 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 									panel.setLayout(null);
 									{
 										lblNewLabel_4 = new JLabel("Precio Costo");
-										lblNewLabel_4.setBounds(10, 24, 60, 14);
+										lblNewLabel_4.setBounds(10, 24, 104, 14);
 										panel.add(lblNewLabel_4);
 									}
 									{
 										txtPrecioCosto = new JTextField();
-										txtPrecioCosto.setBounds(107, 22, 80, 18);
+										txtPrecioCosto.setBounds(112, 22, 80, 18);
 										panel.add(txtPrecioCosto);
 										txtPrecioCosto.setColumns(10);
 									}
 									{
 										lblNewLabel_5 = new JLabel("Precio Venta");
-										lblNewLabel_5.setBounds(10, 54, 79, 12);
+										lblNewLabel_5.setBounds(10, 54, 104, 12);
 										panel.add(lblNewLabel_5);
 									}
 									{
 										txtPrecioVenta = new JTextField();
-										txtPrecioVenta.setBounds(107, 51, 80, 18);
+										txtPrecioVenta.setBounds(112, 48, 80, 18);
 										panel.add(txtPrecioVenta);
 										txtPrecioVenta.setColumns(10);
 									}
+								}
+								{
+									btnLimpiar = new JButton("Limpiar");
+									btnLimpiar.addActionListener(this);
+									btnLimpiar.setBounds(432, 14, 84, 20);
+									contentPane.add(btnLimpiar);
 								}
 								Listado();
 		}
@@ -291,12 +298,14 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 	}
 
 	// ---------------- FUNCIONES ----------------
+	
+	// Botón reportar
 
 	protected void do_btnReportar_actionPerformed(ActionEvent e) {		
 		Listado();
 	}
 	
-	
+	// Botón buscar
 
 	protected void do_btnBuscar_actionPerformed(ActionEvent e) {
 		String textoBuscar = txtBCodigo.getText().trim();
@@ -324,6 +333,8 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 		JOptionPane.showMessageDialog(this, "Función adicionar aún no implementada");
 	}
 
+	// Método Listado
+	
 	void Listado() {
 		DefaultTableModel modelo =
 				(DefaultTableModel) tablaP.getModel();
@@ -350,10 +361,26 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 				});
 	}
 	
+	// Método Limpiar
+	
+	void Limpiar() {
+		
+		txtBCodigo.setText("");
+		txtCategoria.setText("");
+		txtCodigo.setText("");
+		txtMarca.setText("");
+		txtNombre.setText("");
+		txtPrecioCosto.setText("");
+		txtPrecioVenta.setText("");
+		txtStock.setText("");
+	}
 	
 	// Botón Modificar
 	
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnLimpiar) {
+			do_btnLimpiar_actionPerformed(e);
+		}
 		if (e.getSource() == btnEliminar) {
 			do_btnEliminar_actionPerformed(e);
 		}
@@ -392,7 +419,7 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 	    }
 	}
 	
-	
+	// Botón eliminar
 	
 	protected void do_btnEliminar_actionPerformed(ActionEvent e) {
 						
@@ -441,6 +468,12 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 		txtStock.setText(tablaP.getValueAt(fila,4).toString());
 		txtPrecioCosto.setText(tablaP.getValueAt(fila,5).toString());
 		txtPrecioVenta.setText(tablaP.getValueAt(fila,6).toString());
+	}
+	
+	// Botón limpiar
+	
+	protected void do_btnLimpiar_actionPerformed(ActionEvent e) {
+		Limpiar();	
 	}
 	
 }
