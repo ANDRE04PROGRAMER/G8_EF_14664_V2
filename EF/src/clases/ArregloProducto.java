@@ -41,8 +41,16 @@ public Producto Buscar(String nombre) {
 	}
 	return null;
 }
-
-public void Eliminar (Producto x) {
-	Pro.remove(x);
+public void Eliminar(int codigo) {
+    Producto p = Buscar(codigo);
+    if (p != null) {
+        Pro.remove(p);
+    }
+}
+public void Eliminar(String nombre) {
+    Producto p = Buscar(nombre);
+    if (p != null) {
+        Pro.remove(p);
+    }
 }
 }

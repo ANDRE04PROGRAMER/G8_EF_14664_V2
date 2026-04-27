@@ -1,3 +1,2 @@
-2026/04/26-20:29:58.333 78e0 Reusing MANIFEST C:\Users\ado_1\OneDrive\Escritorio\G8_EF_14664\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
-2026/04/26-20:29:58.343 78e0 Recovering log #3
-2026/04/26-20:29:58.348 78e0 Reusing old log C:\Users\ado_1\OneDrive\Escritorio\G8_EF_14664\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/000003.log 
+2026/04/26-21:37:34.101 3228 Creating DB C:\Users\Usuario\OneDrive\Escritorio\G8_EF_14664_V2\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb since it was missing.
+2026/04/26-21:37:34.151 3228 Reusing MANIFEST C:\Users\Usuario\OneDrive\Escritorio\G8_EF_14664_V2\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001

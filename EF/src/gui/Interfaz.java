@@ -423,28 +423,42 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 	
 	protected void do_btnEliminar_actionPerformed(ActionEvent e) {
 						
-		String texto = txtCodigo.getText().trim();
-		if (texto.isEmpty()) {
-			JOptionPane.showMessageDialog(this, "Ingrese el codigo");
-			return;
+		String codigoTexto = txtCodigo.getText().trim();
+		String nombreTexto = txtNombre.getText().trim();
+
+		if (!codigoTexto.isEmpty()) {
+
+		    try {
+		        int cod = Integer.parseInt(codigoTexto);
+		        Producto p = ae.Buscar(cod);
+
+		        if (p != null) {
+		            ae.Eliminar(cod);
+		            JOptionPane.showMessageDialog(this, "Producto eliminado");
+		        } else {
+		            JOptionPane.showMessageDialog(this, "El código no existe");
+		        }
+
+		    } catch (NumberFormatException ex) {
+		        JOptionPane.showMessageDialog(this, "Solo números en código");
+		    }
+
 		}
-		
-		try {
-			int cod = Integer.parseInt(txtCodigo.getText());
-			Producto p = ae.Buscar(cod);
-			
-			if (p != null) {
-				ae.Eliminar(p);
-				JOptionPane.showMessageDialog(this, "Producto eliminado");
-				txtCodigo.setText("");
-			} else {
-				JOptionPane.showMessageDialog(this, "El codigo no existe");
-				txtCodigo.setText("");
-			}
-			
-		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(this, "Solo permite números");			
-		} 
+		else if (!nombreTexto.isEmpty()) {
+
+		    Producto p = ae.Buscar(nombreTexto);
+
+		    if (p != null) {
+		        ae.Eliminar(nombreTexto); 
+		        JOptionPane.showMessageDialog(this, "Producto eliminado");
+		    } else {
+		        JOptionPane.showMessageDialog(this, "El nombre no existe");
+		    }
+
+		}
+		else {
+		    JOptionPane.showMessageDialog(this, "Ingrese código o nombre");
+		}
 	}
 	public void mouseClicked(MouseEvent e) {
 		if (e.getSource() == tablaP) {
