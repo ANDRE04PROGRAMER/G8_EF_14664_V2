@@ -106,9 +106,15 @@ public class Inicio extends JFrame implements ActionListener {
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
 		
 		String usuario = txtUsuario.getText();
-		String clave = new String(txtContraseña.getPassword());
+		String clave = new String(txtContraseña.getPassword());		
+		
+		if(usuario.isEmpty() || clave.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Ingrese los datos");
+			return;
+		}
+		
 		if(usuario.equals("admin")&& clave.equals("123")) {
-			JOptionPane.showMessageDialog(this,"Binevenido");
+			JOptionPane.showMessageDialog(this,"Bienvenido");
 			Interfaz i = new Interfaz();
 			i.setVisible(true);
 			dispose();

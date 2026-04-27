@@ -292,23 +292,23 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 
 	// ---------------- FUNCIONES ----------------
 
-	protected void do_btnReportar_actionPerformed(ActionEvent e) {
-		
+	protected void do_btnReportar_actionPerformed(ActionEvent e) {		
 		Listado();
 	}
 	
 	
 
 	protected void do_btnBuscar_actionPerformed(ActionEvent e) {
+		String textoBuscar = txtBCodigo.getText().trim();
 		
+		if (textoBuscar.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Ingrese el código para buscar");
+			return;
+		}
 		try {
-			Producto p = null;
-			try {
+			
 			int codigo = Integer.parseInt(txtBCodigo.getText());
-			 p = ae.Buscar(codigo);
-			} catch (NumberFormatException ex) {
-				 p = ae.Buscar(txtBCodigo.getText());
-			}
+			Producto p = ae.Buscar(codigo);					
 
 			if (p != null ) {
 				JOptionPane.showMessageDialog(this, "Sí existe");
@@ -316,7 +316,7 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 				JOptionPane.showMessageDialog(this, "No existe");
 			}
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(this, "Ingrese un código válido");			
+			JOptionPane.showMessageDialog(this, "Solo permite números!");			
 		}
 	}
 
@@ -395,10 +395,17 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 	
 	
 	protected void do_btnEliminar_actionPerformed(ActionEvent e) {
-		int cod = Integer.parseInt(txtCodigo.getText());
-		Producto p = ae.Buscar(cod);
+						
+		String texto = txtCodigo.getText().trim();
+		if (texto.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Ingrese el codigo");
+			return;
+		}
 		
 		try {
+			int cod = Integer.parseInt(txtCodigo.getText());
+			Producto p = ae.Buscar(cod);
+			
 			if (p != null) {
 				ae.Eliminar(p);
 				JOptionPane.showMessageDialog(this, "Producto eliminado");
@@ -409,8 +416,8 @@ public class Interfaz extends JFrame implements ActionListener, MouseListener {
 			}
 			
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(this, "Ingrese el código válido");			
-		}		
+			JOptionPane.showMessageDialog(this, "Solo permite números");			
+		} 
 	}
 	public void mouseClicked(MouseEvent e) {
 		if (e.getSource() == tablaP) {
